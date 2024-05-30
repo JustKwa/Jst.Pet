@@ -1,0 +1,279 @@
+[gd_scene load_steps=38 format=3 uid="uid://d2g50yxcpvptx"]
+
+[ext_resource type="Script" path="res://Root.gd" id="1_81a78"]
+[ext_resource type="Texture2D" uid="uid://dxna50dprr2bw" path="res://Cat Sprite Sheet.png" id="2_0jkwk"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="3_jeee7"]
+[ext_resource type="Script" path="res://StateMachine/States/Idle.gd" id="4_j7wb0"]
+[ext_resource type="Script" path="res://StateMachine/States/Scratch.gd" id="5_1hj04"]
+[ext_resource type="Script" path="res://StateMachine/States/Walk.gd" id="5_1iuko"]
+[ext_resource type="Script" path="res://StateMachine/States/Run.gd" id="6_ucu6q"]
+[ext_resource type="Script" path="res://StateMachine/States/Sleep.gd" id="8_txlis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_budc3"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2abs6"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohssj"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c86a7"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2clh0"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1cxw"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_668qb"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p5na"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpr07"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2amah"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30gy7"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj6vx"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15455"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypj7u"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfuay"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p7n5"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b225x"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1d2a"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i68sx"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nb6y"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40f4c"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqutp"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v08dh"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxk45"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3huf"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh7au"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxilf"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(192, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpb02"]
+atlas = ExtResource("2_0jkwk")
+region = Rect2(224, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41wj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_budc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2abs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohssj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c86a7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2clh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1cxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_668qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p5na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpr07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2amah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30gy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj6vx")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_15455")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypj7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfuay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p7n5")
+}],
+"loop": true,
+"name": &"Scratch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_b225x")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_q1d2a")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_i68sx")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_5nb6y")
+}],
+"loop": true,
+"name": &"Sleep",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40f4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqutp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v08dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxk45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3huf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh7au")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxilf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpb02")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
+}]
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_81a78")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, 64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_41wj7")
+animation = &"Sleep"
+frame_progress = 0.482361
+offset = Vector2(0, -12)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "starting_state")]
+script = ExtResource("3_jeee7")
+parent = NodePath("..")
+starting_state = NodePath("Walk")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_j7wb0")
+animation_name = "Idle"
+state_duration_range = Vector2(5.43, 10.315)
+
+[node name="Scratch" type="Node" parent="StateMachine"]
+script = ExtResource("5_1hj04")
+animation_name = "Scratch"
+state_duration_range = Vector2(3.855, 6.09)
+
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("5_1iuko")
+speed = 110.0
+idle_state = NodePath("../Idle")
+animation_name = "Walk"
+state_duration_range = Vector2(3.975, 9.115)
+
+[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("6_ucu6q")
+idle_state = NodePath("../Idle")
+animation_name = "Run"
+state_duration_range = Vector2(2.3, 5.25)
+
+[node name="Sleep" type="Node" parent="StateMachine"]
+script = ExtResource("8_txlis")
+animation_name = "Sleep"
+state_duration_range = Vector2(9.05, 14.3)
