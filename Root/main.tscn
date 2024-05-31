@@ -273,8 +273,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_muk33"]
-size = Vector2(72, 37.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sy02d"]
+radius = 29.0
+height = 76.0
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_6p2ag")
@@ -287,9 +288,10 @@ sprite_frames = SubResource("SpriteFrames_41wj7")
 animation = &"Drag"
 offset = Vector2(0, -12)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "starting_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "available_states", "starting_state")]
 script = ExtResource("3_4om2y")
 parent = NodePath("..")
+available_states = [NodePath("Idle"), NodePath("Scratch"), NodePath("Walk"), NodePath("Run"), NodePath("Sleep")]
 starting_state = NodePath("Walk")
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -311,6 +313,7 @@ state_duration_range = Vector2(5, 10)
 
 [node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("7_j1pqr")
+speed = 150.0
 idle_state = NodePath("../Idle")
 animation_name = "Run"
 state_duration_range = Vector2(2.3, 5.25)
@@ -330,10 +333,12 @@ animation_name = "Drag"
 position = Vector2(40, 61)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Drag/Area2D"]
-shape = SubResource("RectangleShape2D_muk33")
+position = Vector2(0, -10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sy02d")
 
 [node name="Drop" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("10_4ugjg")
 idle_state = NodePath("../Idle")
-gravity = 300.0
+gravity = 400.0
 animation_name = "Drop"
