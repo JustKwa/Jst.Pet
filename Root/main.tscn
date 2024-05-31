@@ -253,19 +253,19 @@ starting_state = NodePath("Walk")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_y0ctp")
 animation_name = "Idle"
-state_duration_range = Vector2(5.43, 10.315)
+state_duration_range = Vector2(5, 10)
 
 [node name="Scratch" type="Node" parent="StateMachine"]
 script = ExtResource("5_hua3c")
 animation_name = "Scratch"
-state_duration_range = Vector2(3.855, 6.09)
+state_duration_range = Vector2(4, 6)
 
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("6_g6teu")
 speed = 110.0
 idle_state = NodePath("../Idle")
 animation_name = "Walk"
-state_duration_range = Vector2(3.975, 9.115)
+state_duration_range = Vector2(5, 10)
 
 [node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("7_j1pqr")
@@ -276,4 +276,4 @@ state_duration_range = Vector2(2.3, 5.25)
 [node name="Sleep" type="Node" parent="StateMachine"]
 script = ExtResource("8_gnpjn")
 animation_name = "Sleep"
-state_duration_range = Vector2(9.05, 14.3)
+state_duration_range = Vector2(15, 30)
