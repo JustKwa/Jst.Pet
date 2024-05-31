@@ -10,10 +10,11 @@ var current_position: Vector2 = Vector2(300, 0)
 	ProjectSettings.get_setting("display/window/size/viewport_height"))
 @onready var usable_desktop_resolution: Vector2i = DisplayServer.screen_get_usable_rect().size
 @onready var world_bound_x: Vector2i = Vector2i(0, usable_desktop_resolution.x - game_resolution.x)
+@onready var world_bound_y: Vector2i = Vector2i(0, usable_desktop_resolution.y - game_resolution.y)
 
 func _ready():
 	set_transparent_bg()
-	current_position.y = usable_desktop_resolution.y - game_resolution.y
+	current_position.y = world_bound_y.y
 	get_window().position = current_position
 
 func _process(delta: float) -> void:

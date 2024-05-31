@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2g50yxcpvptx"]
+[gd_scene load_steps=45 format=3 uid="uid://d2g50yxcpvptx"]
 
 [ext_resource type="Script" path="res://Root/Root.gd" id="1_6p2ag"]
 [ext_resource type="Texture2D" uid="uid://dxna50dprr2bw" path="res://Assets/Cat Sprite Sheet.png" id="2_piqk1"]
@@ -8,6 +8,24 @@
 [ext_resource type="Script" path="res://StateMachine/States/Walk.gd" id="6_g6teu"]
 [ext_resource type="Script" path="res://StateMachine/States/Run.gd" id="7_j1pqr"]
 [ext_resource type="Script" path="res://StateMachine/States/Sleep.gd" id="8_gnpjn"]
+[ext_resource type="Script" path="res://StateMachine/States/Drag.gd" id="9_7rfvk"]
+[ext_resource type="Script" path="res://StateMachine/States/Drop.gd" id="10_4ugjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crrts"]
+atlas = ExtResource("2_piqk1")
+region = Rect2(128, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnmsl"]
+atlas = ExtResource("2_piqk1")
+region = Rect2(160, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emwci"]
+atlas = ExtResource("2_piqk1")
+region = Rect2(192, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krccj"]
+atlas = ExtResource("2_piqk1")
+region = Rect2(96, 256, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_budc3"]
 atlas = ExtResource("2_piqk1")
@@ -125,6 +143,28 @@ region = Rect2(224, 128, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_crrts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnmsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emwci")
+}],
+"loop": true,
+"name": &"Drag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krccj")
+}],
+"loop": true,
+"name": &"Drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_budc3")
 }, {
 "duration": 1.0,
@@ -233,6 +273,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muk33"]
+size = Vector2(72, 37.5)
+
 [node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_6p2ag")
 animated_sprite = NodePath("AnimatedSprite2D")
@@ -241,8 +284,7 @@ animated_sprite = NodePath("AnimatedSprite2D")
 position = Vector2(40, 64)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_41wj7")
-animation = &"Sleep"
-frame_progress = 0.482361
+animation = &"Drag"
 offset = Vector2(0, -12)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "starting_state")]
@@ -277,3 +319,21 @@ state_duration_range = Vector2(2.3, 5.25)
 script = ExtResource("8_gnpjn")
 animation_name = "Sleep"
 state_duration_range = Vector2(15, 30)
+
+[node name="Drag" type="Node" parent="StateMachine" node_paths=PackedStringArray("drop_state", "area_2d")]
+script = ExtResource("9_7rfvk")
+drop_state = NodePath("../Drop")
+area_2d = NodePath("Area2D")
+animation_name = "Drag"
+
+[node name="Area2D" type="Area2D" parent="StateMachine/Drag"]
+position = Vector2(40, 61)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Drag/Area2D"]
+shape = SubResource("RectangleShape2D_muk33")
+
+[node name="Drop" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("10_4ugjg")
+idle_state = NodePath("../Idle")
+gravity = 300.0
+animation_name = "Drop"
