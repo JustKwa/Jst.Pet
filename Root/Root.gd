@@ -3,6 +3,7 @@ extends Node2D
 
 var current_position: Vector2 = Vector2(300, 0)
 
+@export var icon: Image
 @export var animated_sprite: AnimatedSprite2D
 
 @onready var game_resolution: Vector2i = Vector2i(
@@ -18,7 +19,10 @@ func _ready():
 	get_window().position = current_position
 
 func _process(delta: float) -> void:
-	current_position.y = usable_desktop_resolution.y - game_resolution.y
+	if (get_window().position.x <= world_bound_x.x - game_resolution.x):
+		get_window().position.x += usable_desktop_resolution.x + game_resolution.x
+	if (get_window().position.x >= world_bound_x.y + game_resolution.x):
+		get_window().position.x -= usable_desktop_resolution.x + game_resolution.x
 	$StateMachine.process_frame(delta)
 
 func play_animation(animation_name: String):

@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Jst.Pet"
-run/main_scene="res://Root/main.tscn"
+run/main_scene="res://Root/Root.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 0)
+boot_splash/show_image=false
 config/icon="res://Assets/icon.svg"
 
 [display]
@@ -24,8 +26,14 @@ window/size/initial_position_type=0
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
+window/size/no_focus=true
+window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [filesystem]
 

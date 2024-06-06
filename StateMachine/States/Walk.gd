@@ -22,20 +22,8 @@ func process_frame(delta: float) -> State:
 
 	root_node.play_animation(animation_name)
 	get_window().position.x += int(speed * delta) * direction
-	
-	if !root_node.is_within_world_bound():
-		get_window().position.x -= direction
-		return idle_state
-	
+
 	return null
 
 func get_random_direction() -> int:
-	var offset: int = 60
-	
-	if get_window().position.x <= root_node.world_bound_x.x + offset:
-		return 1
-
-	if get_window().position.x >= root_node.world_bound_x.y - offset:
-		return - 1
-	
 	return direction_option.pick_random()

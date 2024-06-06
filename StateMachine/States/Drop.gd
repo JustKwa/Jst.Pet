@@ -4,15 +4,15 @@ extends State
 var inertia: Vector2i = Vector2i.ZERO
 
 @export var idle_state: StateIdle
-@export var gravity: float
+@export var gravity: int
 
 func enter() -> void:
 	root_node.play_animation(animation_name)
 
 func process_frame(delta: float) -> State:
-	get_window().position.x -= int(inertia.x * delta)
-	get_window().position.y -= int(inertia.y * delta)
-	inertia.y -= int(gravity * delta * 1.5)
+	get_window().position.x -= floor(inertia.x * delta)
+	get_window().position.y -= floor(inertia.y * delta)
+	inertia.y -= floor(gravity * delta * 1.5)
 
 	if get_window().position.y >= root_node.world_bound_y.y:
 		get_window().position.y = root_node.world_bound_y.y
