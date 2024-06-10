@@ -28,6 +28,7 @@ func _input(event: InputEvent) -> void:
 
 		if !(mouse_event.pressed):
 			state = DraggingState.NotDragging
+			DisplayServer.cursor_set_custom_image(root_node.mouse_open_texture)
 			drop_state.set_inertia(mouse_vectors)
 			mouse_vectors.clear()
 			parent.change_state(drop_state)
@@ -43,6 +44,7 @@ func _input(event: InputEvent) -> void:
 
 		if (mouse_event.pressed):
 			state = DraggingState.Dragging
+			DisplayServer.cursor_set_custom_image(root_node.mouse_close_texture)
 			parent.change_state(self)
 
 func process_frame(_delta: float) -> State:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://d2g50yxcpvptx"]
+[gd_scene load_steps=50 format=3 uid="uid://d2g50yxcpvptx"]
 
 [ext_resource type="Script" path="res://Root/Root.gd" id="1_bicw6"]
 [ext_resource type="Texture2D" uid="uid://dxna50dprr2bw" path="res://Assets/Cat Sprite Sheet.png" id="2_gyicj"]
+[ext_resource type="Texture2D" uid="uid://bj6l00p3cn2mm" path="res://Assets/Mouse Sprite Open.png" id="2_olm4b"]
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="3_nqofn"]
+[ext_resource type="Texture2D" uid="uid://o5uqao7kyall" path="res://Assets/Mouse Sprite Close.png" id="3_qt3u1"]
 [ext_resource type="Script" path="res://StateMachine/States/Idle.gd" id="4_m0cjm"]
 [ext_resource type="Script" path="res://StateMachine/States/Scratch.gd" id="5_sakjp"]
 [ext_resource type="Script" path="res://StateMachine/States/Walk.gd" id="6_8kpdy"]
@@ -294,11 +296,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sy02d"]
-radius = 24.0
-height = 76.0
+radius = 30.0
+height = 80.0
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_bicw6")
+mouse_open_texture = ExtResource("2_olm4b")
+mouse_close_texture = ExtResource("3_qt3u1")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -350,7 +354,7 @@ area_2d = NodePath("Area2D")
 animation_name = "Drag"
 
 [node name="Area2D" type="Area2D" parent="StateMachine/Drag"]
-position = Vector2(40, 36)
+position = Vector2(40, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Drag/Area2D"]
 rotation = 1.5708

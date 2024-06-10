@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Jst.Pet"
+config/version="1.0.1"
 run/main_scene="res://Root/Root.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=300
@@ -35,6 +36,7 @@ window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
+mouse_cursor/custom_image="res://Assets/Mouse Sprite Open.png"
 
 [editor_plugins]
 

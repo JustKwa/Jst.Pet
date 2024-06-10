@@ -3,6 +3,8 @@ extends Node2D
 
 var current_position: Vector2 = Vector2(300, 0)
 
+@export var mouse_open_texture: Texture2D
+@export var mouse_close_texture: Texture2D
 @export var animated_sprite: AnimatedSprite2D
 
 @onready var game_resolution: Vector2i = Vector2i(
