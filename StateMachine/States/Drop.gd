@@ -3,7 +3,7 @@ extends State
 
 var inertia: Vector2i = Vector2i.ZERO
 
-@export var idle_state: StateIdle
+@export var floop_state: StateFloop
 @export var gravity: int
 
 func enter() -> void:
@@ -16,7 +16,7 @@ func process_frame(delta: float) -> State:
 
 	if get_window().position.y >= root_node.world_bound_y.y:
 		get_window().position.y = root_node.world_bound_y.y
-		return idle_state
+		return floop_state
 
 	return null
 

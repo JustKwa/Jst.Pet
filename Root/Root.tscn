@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d2g50yxcpvptx"]
+[gd_scene load_steps=48 format=3 uid="uid://d2g50yxcpvptx"]
 
 [ext_resource type="Script" path="res://Root/Root.gd" id="1_bicw6"]
 [ext_resource type="Texture2D" uid="uid://dxna50dprr2bw" path="res://Assets/Cat Sprite Sheet.png" id="2_gyicj"]
@@ -10,8 +10,7 @@
 [ext_resource type="Script" path="res://StateMachine/States/Sleep.gd" id="8_t4ikc"]
 [ext_resource type="Script" path="res://StateMachine/States/Drag.gd" id="9_r6vx1"]
 [ext_resource type="Script" path="res://StateMachine/States/Drop.gd" id="10_x7eeu"]
-
-[sub_resource type="Image" id="Image_lu8oq"]
+[ext_resource type="Script" path="res://StateMachine/States/Floop.gd" id="11_q4bk0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crrts"]
 atlas = ExtResource("2_gyicj")
@@ -28,6 +27,14 @@ region = Rect2(192, 288, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_krccj"]
 atlas = ExtResource("2_gyicj")
 region = Rect2(96, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvesm"]
+atlas = ExtResource("2_gyicj")
+region = Rect2(128, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcbtc"]
+atlas = ExtResource("2_gyicj")
+region = Rect2(0, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_budc3"]
 atlas = ExtResource("2_gyicj")
@@ -166,6 +173,17 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_mvesm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcbtc")
+}],
+"loop": false,
+"name": &"Floop",
+"speed": 10.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_budc3")
 }, {
@@ -281,21 +299,22 @@ height = 76.0
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_bicw6")
-icon = SubResource("Image_lu8oq")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, 64)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_41wj7")
-animation = &"Drag"
+animation = &"Floop"
+frame = 1
+frame_progress = 1.0
 offset = Vector2(0, -12)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "available_states", "starting_state")]
 script = ExtResource("3_nqofn")
 parent = NodePath("..")
 available_states = [NodePath("Idle"), NodePath("Scratch"), NodePath("Walk"), NodePath("Run"), NodePath("Sleep")]
-starting_state = NodePath("Walk")
+starting_state = NodePath("Drop")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_m0cjm")
@@ -340,8 +359,13 @@ position = Vector2(0, -10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_sy02d")
 
-[node name="Drop" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Drop" type="Node" parent="StateMachine" node_paths=PackedStringArray("floop_state")]
 script = ExtResource("10_x7eeu")
-idle_state = NodePath("../Idle")
+floop_state = NodePath("../Floop")
 gravity = 500
 animation_name = "Drop"
+
+[node name="Floop" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("11_q4bk0")
+idle_state = NodePath("../Idle")
+animation_name = "Floop"

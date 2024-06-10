@@ -9,6 +9,9 @@ var current_duration: float
 @export var animation_name: String
 @export var state_duration_range: Vector2
 
+func _init():
+	return
+
 func enter() -> void:
 	root_node.play_animation(animation_name)
 	max_duration = randf_range(
