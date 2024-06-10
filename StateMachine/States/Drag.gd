@@ -46,7 +46,7 @@ func _input(event: InputEvent) -> void:
 			parent.change_state(self)
 
 func process_frame(_delta: float) -> State:
-	get_window().position = DisplayServer.mouse_get_position() - Vector2i(40, 51)
+	get_window().position = DisplayServer.mouse_get_position() - Vector2i(40, 30)
 	record_mouse_pos(DisplayServer.mouse_get_position())
 	return null
 

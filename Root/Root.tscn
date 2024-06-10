@@ -24,9 +24,9 @@ region = Rect2(160, 288, 32, 32)
 atlas = ExtResource("2_gyicj")
 region = Rect2(192, 288, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_krccj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6034g"]
 atlas = ExtResource("2_gyicj")
-region = Rect2(96, 256, 32, 32)
+region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvesm"]
 atlas = ExtResource("2_gyicj")
@@ -166,7 +166,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_krccj")
+"texture": SubResource("AtlasTexture_6034g")
 }],
 "loop": true,
 "name": &"Drop",
@@ -294,7 +294,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sy02d"]
-radius = 29.0
+radius = 24.0
 height = 76.0
 
 [node name="Root" type="Node2D" node_paths=PackedStringArray("animated_sprite")]
@@ -302,12 +302,10 @@ script = ExtResource("1_bicw6")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(40, 64)
+position = Vector2(40, 44)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_41wj7")
-animation = &"Floop"
-frame = 1
-frame_progress = 1.0
+animation = &"Drop"
 offset = Vector2(0, -12)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("parent", "available_states", "starting_state")]
@@ -352,10 +350,9 @@ area_2d = NodePath("Area2D")
 animation_name = "Drag"
 
 [node name="Area2D" type="Area2D" parent="StateMachine/Drag"]
-position = Vector2(40, 61)
+position = Vector2(40, 36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Drag/Area2D"]
-position = Vector2(0, -10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_sy02d")
 
