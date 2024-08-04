@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d2g50yxcpvptx"]
+[gd_scene load_steps=50 format=3 uid="uid://d2g50yxcpvptx"]
 
 [ext_resource type="Script" path="res://Root/Root.gd" id="1_bicw6"]
 [ext_resource type="Texture2D" uid="uid://dxna50dprr2bw" path="res://Assets/Cat Sprite Sheet.png" id="2_gyicj"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://StateMachine/States/Drag.gd" id="9_r6vx1"]
 [ext_resource type="Script" path="res://StateMachine/States/Drop.gd" id="10_x7eeu"]
 [ext_resource type="Script" path="res://StateMachine/States/Floop.gd" id="11_q4bk0"]
-[ext_resource type="Script" path="res://Common/HideFromTaskBar.cs" id="14_wmy5f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_crrts"]
 atlas = ExtResource("2_gyicj")
@@ -371,6 +370,3 @@ animation_name = "Drop"
 script = ExtResource("11_q4bk0")
 idle_state = NodePath("../Idle")
 animation_name = "Floop"
-
-[node name="HideFromTaskBar" type="Node" parent="."]
-script = ExtResource("14_wmy5f")
