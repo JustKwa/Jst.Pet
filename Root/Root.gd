@@ -43,7 +43,7 @@ func set_transparent_bg() -> void:
 
 ## Setting the max fps of the game to refresh rate to avoid jittering and visual tearing
 func set_max_fps_base_on_refresh_rate() -> void:
-	Engine.set_max_fps(DisplayServer.screen_get_refresh_rate())
+	Engine.set_max_fps(int(DisplayServer.screen_get_refresh_rate()))
 
 ## Setting the initial spawn location of the game window
 func set_spawn_location() -> void:
